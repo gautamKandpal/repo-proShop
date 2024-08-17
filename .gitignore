@@ -22,3 +22,10 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+#not needed things 
+/public/robots.txt
+/public/manifest.json
+/src/reportsWebVitals.js
+/src/setupTests.js

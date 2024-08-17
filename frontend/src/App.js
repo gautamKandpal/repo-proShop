@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -10,7 +11,7 @@ const App = () => {
       <main className="py-3">
         {/* adding padding on y-axis */}
         <Container>
-          <h1>Welcome to proshop</h1>
+          <Outlet />
         </Container>
       </main>
       <Footer />

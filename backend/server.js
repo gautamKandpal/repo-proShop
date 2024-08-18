@@ -6,10 +6,6 @@ import products from "./data/products.js";
 const app = express();
 const port = process.env.PORT || 5000; //added fallback port
 
-app.get("/", (req, res) => {
-  res.send("hello from get request");
-});
-
 app.get("/api/products", (req, res) => {
   res.json(products);
 });

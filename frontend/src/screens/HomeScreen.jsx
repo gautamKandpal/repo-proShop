@@ -1,6 +1,3 @@
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-// import products from "../products";
 import { useGetProductsQuery } from "../slices/productApiSlices";
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
@@ -16,7 +13,6 @@ function HomeScreen() {
         <div>{error?.data?.message || error.error}</div>
       ) : (
         <>
-          {" "}
           <h1>Latest Products </h1>
           <Row>
             {products.map((product) => (

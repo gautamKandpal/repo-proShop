@@ -4,10 +4,23 @@ import User from "../models/userModel.js";
 //@desc  Auth user & get token
 //@route  POST /api/users/login
 const authUser = asyncHandler(async (req, res) => {
-  // const users = await User.find({});
+  const { email, password } = req.body;
 
-  // res.json(users);
-  res.send("auth user");
+  const user = await User.findOne({ email: email });
+
+  //comparing the password with the store bcrypt password in user Model
+  if (user && (await user.matchPassword(password))) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(401).json({ message: "Invalid Email or Password!" });
+    // throw new Error("Invalid email or password");
+  }
+  // console.log(req.body);
 });
 
 //@desc  Register user
@@ -37,7 +50,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 //@desc  Get users -->Admin
 //@route  GET /api/users
 const getUsers = asyncHandler(async (req, res) => {
-  res.send("get users");
+  res.send("get cc");
 });
 
 //@desc  Get user by ID --> Admin

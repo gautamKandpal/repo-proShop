@@ -9,6 +9,11 @@ import userRoutes from "./routes/userRoutes.js";
 connectDB(); //Connect to MongoDB
 
 const app = express();
+
+//body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const port = process.env.PORT;
 
 app.use("/api/products", productRoutes);

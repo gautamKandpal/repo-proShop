@@ -15,14 +15,18 @@ const router = express.Router();
 
 // router.route("/").post(registerUser);
 // router.route("/logout").post(logoutUser);
-router.route("/").post(registerUser).get(getUsers);
+router.route("/").post(registerUser).get(protect, admin, getUsers);
 
-router.post("/login", authUser);
+router.post("/auth", authUser);
 router.post("/logout", logoutUser);
 router
   .route("/profile")
   .put(protect, updateUserProfile)
   .get(protect, getUserProfile);
-router.route("/:id").get(getUserById).delete(deleteUser).put(updateUser);
+router
+  .route("/:id")
+  .get(protect, admin, getUserById)
+  .delete(protect, admin, deleteUser)
+  .put(protect, admin, updateUser);
 
 export default router;

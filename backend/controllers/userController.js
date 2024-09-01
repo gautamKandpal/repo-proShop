@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 //@desc  Auth user & get token
 //@route  POST /api/users/login
-const authUser = asyncHandler(async (req, res) => {
+const authUser = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email: email });
@@ -34,7 +34,7 @@ const authUser = asyncHandler(async (req, res) => {
     res.status(401).json({ message: "Invalid Email or Password!" });
     // throw new Error("Invalid email or password");
   }
-});
+};
 
 //@desc  Register user
 //@route  POST /api/users

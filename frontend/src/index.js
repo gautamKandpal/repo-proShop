@@ -4,7 +4,6 @@ import "./assets/styles/index.css";
 import "./assets/styles/bootstrap.custom.css";
 import { Provider } from "react-redux";
 import store from "./store";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -17,6 +16,7 @@ import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import ShippingScreens from "./screens/ShippingScreens";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="/cart" element={<CartScreen />} />
       <Route path="/login" element={<LoginScreen />}></Route>
       <Route path="/register" element={<RegisterScreen />}></Route>
+      <Route path="/shipping" element={<ShippingScreens />}></Route>
     </Route>
   )
 );

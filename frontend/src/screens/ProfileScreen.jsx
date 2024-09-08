@@ -6,9 +6,9 @@ import { FaTimes } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { useProfileMutation } from "../slices/usersApiSlice";
-import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
-import { setCredentials } from "../slices/authSlice";
+import { useProfileMutation } from "../slices/usersApiSlices.js";
+import { useGetMyOrdersQuery } from "../slices/ordersApiSlice.js";
+import { setCredentials } from "../slices/authslice.js";
 import { Link } from "react-router-dom";
 
 const ProfileScreen = () => {
@@ -37,14 +37,11 @@ const ProfileScreen = () => {
     } else {
       try {
         const res = await updateProfile({
-          // NOTE: here we don't need the _id in the request payload as this is
-          // not used in our controller.
-          // _id: userInfo._id,
           name,
           email,
           password,
         }).unwrap();
-        dispatch(setCredentials({ ...res }));
+        dispatch(setCredentials(res));
         toast.success("Profile updated successfully");
       } catch (err) {
         toast.error(err?.data?.message || err.error);

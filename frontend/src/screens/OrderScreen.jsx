@@ -96,9 +96,14 @@ const OrderScreen = () => {
       });
   }
 
-  const deliverHandler = async () => {
-    await deliverOrder(orderId);
-    refetch();
+  const deliverOrderHandler = async () => {
+    try {
+      await deliverOrder(orderId);
+      refetch();
+      toast.success("Order Delivered");
+    } catch (err) {
+      toast.error(err?.data?.message || err.message);
+    }
   };
 
   return isLoading ? (
@@ -240,6 +245,7 @@ const OrderScreen = () => {
                 </ListGroup.Item>
               )}
 
+              {/* MARK AS DELIVERED PLACEHOLDER */}
               {loadingDeliver && <Loader />}
 
               {userInfo &&
@@ -250,7 +256,7 @@ const OrderScreen = () => {
                     <Button
                       type="button"
                       className="btn btn-block"
-                      onClick={deliverHandler}
+                      onClick={deliverOrderHandler}
                     >
                       Mark As Delivered
                     </Button>

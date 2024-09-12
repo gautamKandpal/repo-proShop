@@ -4,6 +4,7 @@ import Loader from "../components/Loader";
 import { useParams, Link } from "react-router-dom";
 import Message from "../components/Message";
 import Product from "../components/Product";
+import ProductCarousel from "../components/ProductCarousel";
 import Paginate from "../components/Paginate";
 
 function HomeScreen() {
@@ -16,7 +17,9 @@ function HomeScreen() {
 
   return (
     <>
-      {keyword && (
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
         <Link to="/" className="btn  btn-light mb-4">
           Go Back
         </Link>
